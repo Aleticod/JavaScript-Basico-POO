@@ -27,7 +27,7 @@ function Student(name, age, cursosAprobados) {
   this.name = name;
   this.age = age;
   this.cursosAprobados = cursosAprobados;
-  /* Esta la primera forma de crear metodos dentro de prototipos
+  /* Esta la primera forma de crear metodos dentro de prototipos NO ES UNA BUENA PRACTICA
   this.aprobarCurso = function (nuevoCurso) {
     this.cursosAprobados.push(nuevoCurso);
   };
@@ -40,3 +40,52 @@ Student.prototype.aprobarCurso = function (nuevoCurso) {
 }
 
 const juanita = new Student ("Juanita", 21, ["curso de videojuegas", "Curso de ingles"]);
+
+// Prototipos con la sintaxis clases
+
+class OtherStudent {
+
+  // Constructor
+  constructor(name, age, aprovedCourses) {
+    this.name = name;
+    this.age = age;
+    this.aprovedCourses = aprovedCourses;
+  }
+
+
+  // Metodos auxiliares
+  aproveCourse(newCourse) {
+    this.aprovedCourses.push(newCourse);
+  }
+}
+
+const jaimito = new OtherStudent("jaimito", 12, ["hola", "Oomo", "quef ue mano"]);
+
+jaimito.aproveCourse("holiiii");
+
+// Objetos como parametros
+
+class OtherStudent2 {
+
+  // Constructor
+  constructor({name, age, email, aprovedCourses = []}) {
+    this.name = name;
+    this.age = age;
+    this.email  = email;
+    this.aprovedCourses = aprovedCourses;
+  }
+
+
+  // Metodos auxiliares
+  aproveCourse(newCourse) {
+    this.aprovedCourses.push(newCourse);
+  }
+}
+
+const miguelito = new OtherStudent2(
+  {
+    email: "miguelito@platzi.com",
+    age: 35,
+    name: "Miguel",
+  }
+)
