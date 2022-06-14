@@ -77,15 +77,15 @@ class OtherStudent2 {
 
 
   // Metodos auxiliares
-  aproveCourse(newCourse) {
-    this.aprovedCourses.push(newCourse);
+  set aproveCourse(newCourse) {
+    this.aprovedCourses.push(newCourse)
   }
 }
-
+// Podemo eviar el objeto como parametro en desorden.
 const miguelito = new OtherStudent2(
   {
     email: "miguelito@platzi.com",
     age: 35,
     name: "Miguel",
   }
-)
+);
