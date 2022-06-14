@@ -78,7 +78,7 @@ class OtherStudent2 {
 
   // Metodos auxiliares
   set aproveCourse(newCourse) {
-    this.aprovedCourses.push(newCourse)
+    this.aprovedCourses.push(newCourse);                                                                                         
   }
 }
 // Podemo eviar el objeto como parametro en desorden.
