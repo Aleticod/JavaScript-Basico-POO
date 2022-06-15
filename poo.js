@@ -34,16 +34,32 @@ class LearningPath {
 }
 
 class Courses {
+  // Atributos
+  #name;
+  // Constructor
   constructor({
     name,
     teacher,
     hours,
     nroClasses,
   }) {
-    this.name = name;
+    this.#name = name;
     this.teacher = teacher;
     this.hours = hours;
     this.nroClasses = nroClasses;
+  };
+
+  // Methods Setters and Getters
+  get name() {
+    return this.#name;
+  };
+
+  set name(nuevoNombre) {
+    if(nuevoNombre === "Curso Malito") {
+      console.error("Web... no");
+    } else {
+      this.#name = nuevoNombre;
+    }
   }
 }
 
