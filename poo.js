@@ -1,3 +1,23 @@
+class Comment {
+  constructor({
+    content,
+    studentName,
+    studentRole = "estudiante",
+  }) {
+    this.content = content;
+    this.studentName = studentName;
+    this.studentRole = studentRole;
+    this.likes = 0;
+  }
+
+  publicar() {
+    console.log(this.studentName + " (" + this.studentRole + ")");
+    console.log(this.likes + " likes");
+    console.log(this.content);
+  }
+}
+
+
 class StudentPlatzi {
 
   constructor({
@@ -20,6 +40,15 @@ class StudentPlatzi {
     };
     this.approvedCourses = approvedCourses;
     this.learningPath = learningPath;
+  }
+
+  publicarComentario(commentContent) {
+    const comment = new Comment({
+      content: commentContent,
+      studentName: this.name,
+    })
+
+    comment.publicar();
   }
 }
 
@@ -58,6 +87,25 @@ class ExpertStudent extends StudentPlatzi{
 
   approveCourse(newCourse) {
     this.approvedCourses.push(newCourse);
+  }
+}
+
+class TeacherStudent extends StudentPlatzi {
+  constructor(props) {
+    super(props)
+  }
+
+  approveCourse(newCourse) {
+    this.approvedCourses.push(newCourse);
+  }
+
+  publicarComentario(commentContent) {
+    const comment = new Comment ({
+      content: commentContent,
+      studentName: this.name,
+      studentRole: "profesor",
+    });
+    comment.publicar();
   }
 }
 
@@ -105,6 +153,13 @@ class Courses {
     }
   }
 }
+
+
+
+
+
+
+
 
 const cursoHTML = new Courses ({
   name: "Curso definitivo de HMTL",
@@ -186,4 +241,10 @@ const papacito = new ExpertStudent ({
     escuelaWeb,
     escuelaData,
   ]
+})
+
+const freddy = new TeacherStudent ({
+  name: "Freddy",
+  usename: "f@algo",
+  email: "freddier@algomas",
 })
