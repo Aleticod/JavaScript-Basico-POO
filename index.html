@@ -10,5 +10,18 @@
   <script src="./main.js"></script>
   <script src = "./literalObject.js"></script>
   <script src = "./poo.js"></script>
+  <!-- <script src="./main.mjs"></script> -->
+
+  <!-- Esto es una forma de importar una clase y hacer encapsulamiento de archivos -->
+  
+  <script type="module">
+    import { PlatziClass } from "./main.mjs"
+    const clase2 = new PlatziClass({
+      name: "JavaScript",
+      videoID: "EstoEsMasSecretoQueLaNasa",
+    })
+    clase2.reproducir();
+    clase2.pausar();
+  </script>
 </body>
 </html>
