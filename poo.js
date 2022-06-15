@@ -23,6 +23,45 @@ class StudentPlatzi {
   }
 }
 
+class FreeStudent extends StudentPlatzi{
+  constructor(props) {
+    super(props);
+  }
+
+  approveCourse(newCourse) {
+    if(newCourse.isFree) {
+      this.approvedCourses.push(newCourse);
+    } else {
+      console.warn("Lo sentimos, " + this.name + ", solo puedes tomar cursos abiertos");
+    }
+  }
+}
+
+class BasicStudent extends StudentPlatzi{
+  constructor(props) {
+    super(props);
+  }
+
+  approveCourse(newCourse) {
+    if(newCourse.lang !== "english") {
+      this.approvedCourses.push(newCourse);
+    } else {
+      console.warn("Lo sentimoes");
+    }
+  }
+}
+
+class ExpertStudent extends StudentPlatzi{
+  constructor(props) {
+    super(props);
+  }
+
+  approveCourse(newCourse) {
+    this.approvedCourses.push(newCourse);
+  }
+}
+
+
 class LearningPath {
   constructor({
     name,
@@ -42,11 +81,15 @@ class Courses {
     teacher,
     hours,
     nroClasses,
+    isFree = false,
+    lang = "spanish",
   }) {
     this.#name = name;
     this.teacher = teacher;
     this.hours = hours;
     this.nroClasses = nroClasses;
+    this.isFree = isFree;
+    this.lang = lang;
   };
 
   // Methods Setters and Getters
@@ -68,6 +111,8 @@ const cursoHTML = new Courses ({
   teacher: "Diego de Granda",
   hours: 4,
   nroClasses: 27,
+  isFree: true,
+  lang: "spanish",
 })
 
 const cursoCSS = new Courses({
@@ -75,6 +120,7 @@ const cursoCSS = new Courses({
   teacher: "TefCode",
   hours: 7,
   nroClasses: 20,
+  lang: "english"
 })
 
 const cursoPython = new Courses({
@@ -109,7 +155,29 @@ const escuelaData = new LearningPath({
 });
 
 
-const juancito = new StudentPlatzi ({
+const juancito = new FreeStudent ({
+  name: "JuanDc",
+  username: "quien",
+  email: "juanito@platzi.com",
+  twitter: "fcdj",
+  learningPath: [
+    escuelaWeb,
+    escuelaData,
+  ]
+})
+
+const dariito = new BasicStudent ({
+  name: "JuanDc",
+  username: "quien",
+  email: "juanito@platzi.com",
+  twitter: "fcdj",
+  learningPath: [
+    escuelaWeb,
+    escuelaData,
+  ]
+})
+
+const papacito = new ExpertStudent ({
   name: "JuanDc",
   username: "quien",
   email: "juanito@platzi.com",
